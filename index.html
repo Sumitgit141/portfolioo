@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Sumit Khandelwal — Portfolio</title>
+
+  <!-- Tailwind (JIT CDN for quick prototyping) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Font Awesome for icons -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" defer></script>
+
+  <!-- ScrollReveal (deferred init in script) -->
+  <script src="https://unpkg.com/scrollreveal" defer></script>
+
+  <!-- Particles (deferred init in script) -->
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js" defer></script>
+
+  <meta name="description" content="Portfolio of Sumit Khandelwal — Software Engineer (Java, PHP, Python, React, MySQL/PostgreSQL)" />
+
+  <style>
+    /* Small set of custom utilities for animation control + layout polish */
+    :root {
+      --accent: #3b82f6; /* blue-500 */
+    }
+
+    html { scroll-behavior: smooth; }
+    body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+
+    /* Particle canvas behind content */
+    #particles-js { position: fixed; inset: 0; z-index: -1; background: #000; }
+
+    /* slower variations of tailwind animations where needed */
+    .spin-slow { animation: spin 4s linear infinite; }
+    .bounce-slow { animation: bounce 2.8s infinite; }
+    .pulse-slow { animation: pulse 2.6s infinite; }
+
+    /* subtle focus outlines for keyboard users */
+    :focus { outline: 3px solid rgba(59,130,246,0.25); outline-offset: 3px; }
+
+    /* Active nav marker */
+    .nav-active { color: var(--accent); font-weight: 600; }
+
+    /* Project card clickable style */
+    .project-card {
+      transition: transform .22s ease, box-shadow .22s ease;
+    }
+    .project-card:focus, .project-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 30px rgba(15,23,42,0.6);
+    }
+
+    /* Make sure profile image is static (no animation) */
+    .profile-pic { will-change: auto; }
+
+    /* Improve readability on very large screens */
+    .container-max { max-width: 1100px; margin-left: auto; margin-right: auto; }
+  </style>
+</head>
+<body class="bg-black text-white font-sans leading-relaxed">
+
+  <!-- Background particles -->
+  <div id="particles-js" aria-hidden="true"></div>
+
+  <!-- NAV -->
+  <header class="fixed top-0 left-0 w-full z-50">
+    <nav class="bg-gray-900/95 backdrop-blur-sm border-b border-gray-800">
+      <div class="container-max px-6 py-3 flex items-center justify-between">
+        <a href="#hero" class="flex items-center gap-3" aria-label="Go to top">
+          <h1 class="text-2xl font-bold text-blue-400">Sumit Khandelwal</h1>
+        </a>
+
+        <ul class="flex items-center space-x-6 text-sm" role="menubar" aria-label="Main navigation">
+          <li><a class="nav-link" href="#about">About</a></li>
+          <li><a class="nav-link" href="#skills">Skills</a></li>
+          <li><a class="nav-link" href="#projects">Projects</a></li>
+          <li><a class="nav-link" href="#experience">Experience</a></li>
+          <li><a class="nav-link" href="#education">Education</a></li>
+          <li><a class="nav-link" href="#certifications">Certifications</a></li>
+          <li><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <main id="hero" class="min-h-screen flex items-center justify-center pt-20 pb-12">
+    <div class="container-max px-6 text-center">
+      <img src="profile.jpg" alt="Sumit Khandelwal — profile photo" class="profile-pic w-60 h-60 rounded-full border-4 border-blue-400 shadow-lg mx-auto mb-6 object-cover" />
+      <h2 class="text-4xl md:text-5xl font-extrabold mb-3">Hi, I'm Sumit Khandelwal</h2>
+      <p class="text-lg text-gray-300 max-w-2xl mx-auto mb-6">Software Engineer — Java (Spring Boot) • PHP • Python • React • MySQL/PostgreSQL</p>
+
+      <div class="flex justify-center gap-4">
+        <a href="#projects" class="px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold shadow hover:bg-blue-700 focus:outline-none">View Projects</a>
+        <button id="downloadResume" class="px-6 py-3 border border-gray-300 rounded-lg text-white hover:bg-white hover:text-black focus:outline-none" aria-label="Download resume">
+          Download Resume
+        </button>
+      </div>
+
+      <div class="mt-6 flex justify-center gap-6 text-xl" aria-hidden="false">
+        <a href="mailto:sumitkhandelwal9099@gmail.com" class="hover:text-blue-400" aria-label="Send email">
+          <i class="fas fa-envelope"></i>
+        </a>
+        <a href="https://linkedin.com/in/sumit-khandelwal-" target="_blank" rel="noopener noreferrer" class="hover:text-blue-400" aria-label="Visit LinkedIn">
+          <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="https://github.com/Sumitgit141" target="_blank" rel="noopener noreferrer" class="hover:text-blue-400" aria-label="Visit GitHub">
+          <i class="fab fa-github"></i>
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <!-- ABOUT -->
+  <section id="about" class="py-16" aria-labelledby="about-heading">
+    <div class="container-max px-6">
+      <h3 id="about-heading" class="text-3xl font-bold mb-6 text-blue-400 flex items-center gap-3">
+        <i class="fas fa-user text-xl text-blue-300 bounce-slow" aria-hidden="true"></i> About Me
+      </h3>
+
+      <div class="bg-gray-800 p-8 rounded-lg shadow max-w-3xl mx-auto">
+        <p class="text-lg text-gray-200">
+          I'm a Software Engineer who enjoys building practical, performant web applications.
+          Skilled in <strong>Java (Spring Boot)</strong>, <strong>PHP</strong>, and <strong>Python</strong> on the backend,
+          and <strong>HTML, CSS, JavaScript, React</strong> on the frontend. I also work with
+          <strong>MySQL, SQL Server, PostgreSQL</strong> and have exposure to <strong>AWS</strong>.
+        </p>
+      </div>
+    </div>
+  </section>
+
+<!-- SKILLS -->
+<section id="skills" class="bg-gray-900 py-16" aria-labelledby="skills-heading">
+  <div class="container-max px-6 text-center">
+    <h3 id="skills-heading" class="text-3xl font-bold mb-10 text-blue-400 flex items-center gap-3">
+      <i class="fas fa-cogs text-xl text-blue-300 spin-slow" aria-hidden="true"></i> Technical Skills
+    </h3>
+
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+      <!-- Skill cards with data-skill -->
+      <button class="bg-gray-800 p-6 rounded-xl shadow-lg w-full" data-skill="java">
+        <i class="fab fa-java text-5xl text-red-500 mb-3 spin-slow"></i>
+        <p class="font-medium">Java (Spring Boot)</p>
+      </button>
+
+      <button class="bg-gray-800 p-6 rounded-xl shadow-lg w-full" data-skill="python">
+        <i class="fab fa-python text-5xl text-yellow-400 mb-3 bounce-slow"></i>
+        <p class="font-medium">Python</p>
+      </button>
+
+      <button class="bg-gray-800 p-6 rounded-xl shadow-lg w-full" data-skill="php">
+        <i class="fab fa-php text-5xl text-indigo-400 mb-3 pulse-slow"></i>
+        <p class="font-medium">PHP</p>
+      </button>
+
+      <button class="bg-gray-800 p-6 rounded-xl shadow-lg w-full" data-skill="react">
+        <i class="fab fa-react text-5xl text-sky-300 mb-3 spin-slow"></i>
+        <p class="font-medium">React.js</p>
+      </button>
+
+      <button class="bg-gray-800 p-6 rounded-xl shadow-lg w-full" data-skill="frontend">
+        <i class="fab fa-html5 text-5xl text-orange-500 mb-3 bounce-slow"></i>
+        <p class="font-medium">HTML, CSS, JavaScript</p>
+      </button>
+
+      <button class="bg-gray-800 p-6 rounded-xl shadow-lg w-full" data-skill="db">
+        <i class="fas fa-database text-5xl text-green-400 mb-3 pulse-slow"></i>
+        <p class="font-medium">MySQL, SQL Server, PostgreSQL</p>
+      </button>
+
+      <button class="bg-gray-800 p-6 rounded-xl shadow-lg w-full" data-skill="aws">
+        <i class="fab fa-aws text-5xl text-yellow-500 mb-3 spin-slow"></i>
+        <p class="font-medium">AWS</p>
+      </button>
+
+      <button class="bg-gray-800 p-6 rounded-xl shadow-lg w-full" data-skill="git">
+        <i class="fab fa-git-alt text-5xl text-orange-400 mb-3 bounce-slow"></i>
+        <p class="font-medium">Git & GitHub</p>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- SKILL MODAL -->
+<div id="skillModal" class="hidden fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50">
+  <div class="bg-gray-900 rounded-xl p-6 w-11/12 md:w-1/2 shadow-lg relative">
+    <button id="closeSkillModal" class="absolute top-3 right-3 text-gray-400 hover:text-white text-2xl">&times;</button>
+    <h4 id="skillTitle" class="text-2xl font-bold text-blue-400 mb-4"></h4>
+    <p id="skillDescription" class="text-gray-300 text-lg"></p>
+  </div>
+</div>
+
+<script>
+  onReady(() => {
+    // Skill descriptions
+    const skillInfo = {
+      java: {
+        title: "Java (Spring Boot)",
+        desc: "Strong knowledge in Core Java, OOPs, JDBC, and Spring Boot for building scalable backend services and REST APIs."
+      },
+      python: {
+        title: "Python",
+        desc: "Hands-on experience with Python for scripting, backend APIs, and integrating with data processing libraries."
+      },
+      php: {
+        title: "PHP",
+        desc: "Developed multiple backend systems using PHP with MySQL/PostgreSQL, focusing on secure login and CRUD applications."
+      },
+      react: {
+        title: "React.js",
+        desc: "Skilled in creating dynamic user interfaces with React.js, using hooks, state management, and API integration."
+      },
+      frontend: {
+        title: "HTML, CSS, JavaScript",
+        desc: "Proficient in building responsive, accessible, and SEO-friendly websites with modern JS (ES6+)."
+      },
+      db: {
+        title: "Databases",
+        desc: "Experienced with MySQL, SQL Server, and PostgreSQL for schema design, optimization, and query performance tuning."
+      },
+      aws: {
+        title: "AWS",
+        desc: "Familiar with deploying and managing applications using AWS cloud services."
+      },
+      git: {
+        title: "Git & GitHub",
+        desc: "Proficient in version control, branching strategies, and collaborating on GitHub for team-based projects."
+      }
+    };
+
+    const modal = document.getElementById("skillModal");
+    const skillTitle = document.getElementById("skillTitle");
+    const skillDescription = document.getElementById("skillDescription");
+    const closeBtn = document.getElementById("closeSkillModal");
+
+    // Open modal when clicking a skill
+    document.querySelectorAll("[data-skill]").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const key = btn.getAttribute("data-skill");
+        skillTitle.textContent = skillInfo[key].title;
+        skillDescription.textContent = skillInfo[key].desc;
+        modal.classList.remove("hidden");
+      });
+    });
+
+    // Close modal
+    closeBtn.addEventListener("click", () => modal.classList.add("hidden"));
+    modal.addEventListener("click", e => { if (e.target === modal) modal.classList.add("hidden"); });
+  });
+</script>
+
+
+  <!-- PROJECTS -->
+  <section id="projects" class="py-16" aria-labelledby="projects-heading">
+    <div class="container-max px-6">
+      <h3 id="projects-heading" class="text-3xl font-bold mb-10 text-blue-400 flex items-center gap-3">
+        <i class="fas fa-folder-open text-xl text-blue-300 pulse-slow" aria-hidden="true"></i> Projects
+      </h3>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Project 1 -->
+        <a class="project-card block bg-gray-800 p-6 rounded-xl shadow-lg focus:outline-none" href="https://github.com/Sumitgit141/Travel-Route-Recommendation" target="_blank" rel="noopener noreferrer">
+          <i class="fas fa-route text-4xl text-indigo-400 mb-3 bounce-slow" aria-hidden="true"></i>
+          <h4 class="text-xl font-semibold mb-2">Travel Route Recommendation System</h4>
+          <p class="text-gray-400">Provides customized travel advice using geolocation and weather integration.</p>
+        </a>
+
+        <!-- Project 2 -->
+        <a class="project-card block bg-gray-800 p-6 rounded-xl shadow-lg focus:outline-none" href="https://github.com/Sumitgit141/Ecommerce-Website" target="_blank" rel="noopener noreferrer">
+          <i class="fas fa-shopping-cart text-4xl text-pink-400 mb-3 spin-slow" aria-hidden="true"></i>
+          <h4 class="text-xl font-semibold mb-2">E-commerce Website</h4>
+          <p class="text-gray-400">Full-stack e-commerce solution with product listing, cart & admin features.</p>
+        </a>
+
+        <!-- Project 3 -->
+        <a class="project-card block bg-gray-800 p-6 rounded-xl shadow-lg focus:outline-none" href="https://github.com/Sumitgit141/Gaming-Cafe-Management" target="_blank" rel="noopener noreferrer">
+          <i class="fas fa-gamepad text-4xl text-yellow-400 mb-3 pulse-slow" aria-hidden="true"></i>
+          <h4 class="text-xl font-semibold mb-2">Gaming Cafe Management System</h4>
+          <p class="text-gray-400">Database-driven system to manage customers, billing, and game cataloging.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience" class="bg-gray-900 py-16" aria-labelledby="experience-heading">
+    <div class="container-max px-6">
+      <h3 id="experience-heading" class="text-3xl font-bold mb-8 text-blue-400 flex items-center gap-3">
+        <i class="fas fa-briefcase text-xl text-blue-300 bounce-slow" aria-hidden="true"></i> Experience
+      </h3>
+
+      <div class="space-y-6 max-w-3xl">
+        <article class="bg-gray-800 p-6 rounded-lg shadow-md">
+          <div class="flex items-start gap-3 mb-2">
+            <i class="fas fa-building text-2xl text-blue-400 pulse-slow" aria-hidden="true"></i>
+            <h4 class="text-lg font-semibold">Software Engineer Intern — Dwise Solution</h4>
+          </div>
+          <p class="text-sm text-gray-400 mb-2">Backend Development • PHP + PostgreSQL</p>
+          <p class="text-gray-300">Developed and optimized database-driven web applications with a focus on scalability and performance.</p>
+        </article>
+
+        <article class="bg-gray-800 p-6 rounded-lg shadow-md">
+          <div class="flex items-start gap-3 mb-2">
+            <i class="fas fa-code text-2xl text-green-400 spin-slow" aria-hidden="true"></i>
+            <h4 class="text-lg font-semibold">Java Full Stack — QSpiders</h4>
+          </div>
+          <p class="text-sm text-gray-400 mb-2">Sep 2024 – Apr 2025 • Hebbal, Bengaluru</p>
+          <p class="text-gray-300">Worked as a Frontend Developer using ReactJS and collaborated with backend integration (Core Java, Spring tools).</p>
+        </article>
+
+        <article class="bg-gray-800 p-6 rounded-lg shadow-md">
+          <div class="flex items-start gap-3 mb-2">
+            <i class="fas fa-robot text-2xl text-purple-400 pulse-slow" aria-hidden="true"></i>
+            <h4 class="text-lg font-semibold">Agnez Automation — Innovation Projects</h4>
+          </div>
+          <p class="text-sm text-gray-400 mb-2">Oct 2023 – Jan 2024</p>
+          <p class="text-gray-300">Contributed on frontend (ReactJS) and backend (Core Java + JDBC + MySQL) for automation projects.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education" class="py-16" aria-labelledby="education-heading">
+    <div class="container-max px-6">
+      <h3 id="education-heading" class="text-3xl font-bold mb-8 text-blue-400 flex items-center gap-3">
+        <i class="fas fa-graduation-cap text-xl text-blue-300 pulse-slow" aria-hidden="true"></i> Education
+      </h3>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="bg-gray-800 p-6 rounded-lg shadow">
+          <div class="flex items-start gap-3 mb-2">
+            <i class="fas fa-university text-2xl text-blue-400 bounce-slow" aria-hidden="true"></i>
+            <h4 class="text-lg font-semibold">B.E. — Computer Science</h4>
+          </div>
+          <p class="text-gray-300">Visvesvaraya Technological University, Bengaluru</p>
+          <p class="font-medium text-gray-300 mt-2">CGPA: 8.6</p>
+        </div>
+
+        <div class="bg-gray-800 p-6 rounded-lg shadow">
+          <div class="flex items-start gap-3 mb-2">
+            <i class="fas fa-school text-2xl text-green-400 pulse-slow" aria-hidden="true"></i>
+            <h4 class="text-lg font-semibold">PUC</h4>
+          </div>
+          <p class="text-gray-300">Sony Academy Jr. Sec. School, Bharatpur</p>
+          <p class="font-medium text-gray-300 mt-2">92%</p>
+        </div>
+
+        <div class="bg-gray-800 p-6 rounded-lg shadow">
+          <div class="flex items-start gap-3 mb-2">
+            <i class="fas fa-school text-2xl text-yellow-400 spin-slow" aria-hidden="true"></i>
+            <h4 class="text-lg font-semibold">SSLC</h4>
+          </div>
+          <p class="text-gray-300">Sony Academy Jr. Sec. School, Bharatpur</p>
+          <p class="font-medium text-gray-300 mt-2">89.6%</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATIONS -->
+  <section id="certifications" class="bg-gray-900 py-16" aria-labelledby="certs-heading">
+    <div class="container-max px-6">
+      <h3 id="certs-heading" class="text-3xl font-bold mb-8 text-blue-400 flex items-center gap-3">
+        <i class="fas fa-certificate text-xl text-yellow-400 spin-slow" aria-hidden="true"></i> Certifications
+      </h3>
+
+      <div class="grid md:grid-cols-2 gap-6 max-w-3xl">
+        <div class="bg-gray-800 p-6 rounded-lg shadow text-left">
+          <i class="fas fa-award text-2xl text-yellow-400 mb-2 bounce-slow" aria-hidden="true"></i>
+          <ul class="list-disc list-inside text-gray-300 space-y-2">
+            <li>Python Programming & Application Projects — Agnez Automation</li>
+            <li>Implementation of Python & ML — Agnez Automation</li>
+          </ul>
+        </div>
+
+        <div class="bg-gray-800 p-6 rounded-lg shadow text-left">
+          <i class="fas fa-award text-2xl text-green-400 mb-2 pulse-slow" aria-hidden="true"></i>
+          <ul class="list-disc list-inside text-gray-300 space-y-2">
+            <li>Java Full Stack — Capgemini</li>
+            <li>Java Full Stack — QSpiders</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="py-16" aria-labelledby="contact-heading">
+    <div class="container-max px-6 text-center">
+      <h3 id="contact-heading" class="text-3xl font-bold mb-6 text-blue-400 flex items-center gap-3">
+        <i class="fas fa-envelope text-xl text-blue-300 bounce-slow" aria-hidden="true"></i> Contact
+      </h3>
+
+      <div class="bg-gray-800 p-6 rounded-lg shadow max-w-xl mx-auto">
+        <p class="text-lg text-gray-200 mb-2"><i class="fas fa-phone-alt text-blue-400 mr-2" aria-hidden="true"></i> +91 8949707760</p>
+        <p class="text-lg text-gray-200 mb-2"><i class="fas fa-envelope text-red-400 mr-2" aria-hidden="true"></i> <a href="mailto:sumitkhandelwal9099@gmail.com" class="text-white hover:text-blue-400">sumitkhandelwal9099@gmail.com</a></p>
+        <p class="text-lg text-gray-200 mb-2"><i class="fab fa-linkedin text-blue-400 mr-2" aria-hidden="true"></i> <a href="https://linkedin.com/in/sumit-khandelwal-" target="_blank" rel="noopener noreferrer" class="text-white hover:text-blue-400">linkedin.com/in/sumit-khandelwal-</a></p>
+        <p class="text-lg text-gray-200"><i class="fab fa-github text-blue-400 mr-2" aria-hidden="true"></i> <a href="https://github.com/Sumitgit141" target="_blank" rel="noopener noreferrer" class="text-white hover:text-blue-400">github.com/Sumitgit141</a></p>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-gray-900 py-6 text-center text-gray-400">
+    <div class="container-max px-6">
+      <p>© 2025 Sumit Khandelwal. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Back to top -->
+  <button id="backToTop" class="fixed bottom-6 right-6 bg-blue-600 text-white p-3 rounded-full shadow-lg hidden" aria-label="Back to top">⬆</button>
+
+  <script>
+  // --------- Utility: wait for DOM loaded ---------
+  const onReady = (fn) => {
+    if (document.readyState !== 'loading') fn();
+    else document.addEventListener('DOMContentLoaded', fn);
+  };
+
+  onReady(() => {
+    /* ---------- Particles init ---------- */
+    if (window.particlesJS) {
+      particlesJS("particles-js", {
+        particles: {
+          number: { value: 80 },
+          color: { value: "#ffffff" },
+          shape: { type: "circle" },
+          opacity: { value: 0.45 },
+          size: { value: 3, random: true },
+          line_linked: { enable: true, distance: 150, color: "#3b82f6", opacity: 0.35, width: 1 },
+          move: { enable: true, speed: 2 }
+        },
+        interactivity: { events: { onhover: { enable: true, mode: "grab" }, onclick: { enable: true, mode: "push" } } },
+        retina_detect: true
+      });
+    }
+
+    /* ---------- ScrollReveal ---------- */
+    if (window.ScrollReveal) {
+      ScrollReveal().reveal('section h3, section .bg-gray-800, .project-card', {
+        distance: '40px',
+        origin: 'bottom',
+        duration: 700,
+        interval: 100,
+        easing: 'ease-out'
+      });
+    }
+
+    /* ---------- Resume download button ---------- */
+    const downloadBtn = document.getElementById('downloadResume');
+    if (downloadBtn) {
+      downloadBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const href = 'Sumit_resum.pdf';
+        const a = document.createElement('a');
+        a.href = href;
+        a.setAttribute('download', 'Sumit_Khandelwal_Resume.pdf');
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+      });
+    }
+
+    /* ---------- Active nav highlight ---------- */
+    const navLinks = document.querySelectorAll('.nav-link');
+    const sections = Array.from(document.querySelectorAll('section, main')).filter(s => s.id);
+    if ('IntersectionObserver' in window && sections.length) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            navLinks.forEach(link => {
+              if (link.getAttribute('href') === `#${entry.target.id}`) link.classList.add('nav-active');
+              else link.classList.remove('nav-active');
+            });
+          }
+        });
+      }, { rootMargin: ' -20% 0px -60% 0px' });
+      sections.forEach(s => io.observe(s));
+    }
+
+    /* ---------- Back to top ---------- */
+    const backToTop = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) backToTop.classList.remove('hidden');
+      else backToTop.classList.add('hidden');
+    });
+    backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    /* ---------- Skill Modal ---------- */
+    const skillInfo = {
+      java: { title: "Java (Spring Boot)", desc: "Strong knowledge in Core Java, OOPs, JDBC, and Spring Boot for building scalable backend services and REST APIs." },
+      python: { title: "Python", desc: "Hands-on experience with Python for scripting, backend APIs, and integrating with data processing libraries." },
+      php: { title: "PHP", desc: "Developed multiple backend systems using PHP with MySQL/PostgreSQL, focusing on secure login and CRUD applications." },
+      react: { title: "React.js", desc: "Skilled in creating dynamic user interfaces with React.js, using hooks, state management, and API integration." },
+      frontend: { title: "HTML, CSS, JavaScript", desc: "Proficient in building responsive, accessible, and SEO-friendly websites with modern JS (ES6+)." },
+      db: { title: "Databases", desc: "Experienced with MySQL, SQL Server, and PostgreSQL for schema design, optimization, and query performance tuning." },
+      aws: { title: "AWS", desc: "Familiar with deploying and managing applications using AWS cloud services." },
+      git: { title: "Git & GitHub", desc: "Proficient in version control, branching strategies, and collaborating on GitHub for team-based projects." }
+    };
+
+    const modal = document.getElementById("skillModal");
+    const skillTitle = document.getElementById("skillTitle");
+    const skillDescription = document.getElementById("skillDescription");
+    const closeBtn = document.getElementById("closeSkillModal");
+
+    document.querySelectorAll("[data-skill]").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const key = btn.getAttribute("data-skill");
+        skillTitle.textContent = skillInfo[key].title;
+        skillDescription.textContent = skillInfo[key].desc;
+        modal.classList.remove("hidden");
+      });
+    });
+
+    closeBtn.addEventListener("click", () => modal.classList.add("hidden"));
+    modal.addEventListener("click", e => { if (e.target === modal) modal.classList.add("hidden"); });
+
+    // ESC key closes modal
+    document.addEventListener("keydown", e => {
+      if (e.key === "Escape") modal.classList.add("hidden");
+    });
+  });
+</script>
+
+</body>
+</html>
